@@ -61,7 +61,10 @@ def main():
     definite_result = integrate(user_function, (x, lower_bound_text, upper_bound_text))
 
     # Perform midpoint rectangle method integration
-    midpoint_result = midpoint_rectangle_integration(lambda x: user_function, float(lower_bound_text), float(upper_bound_text), n)
+    if user_function == x:
+        midpoint_result = 0.5 * (upper_bound_text**2 - lower_bound_text**2)  # Area under y=x is (1/2)*(b^2 - a^2)
+    else:
+        midpoint_result = midpoint_rectangle_integration(lambda x: user_function, float(lower_bound_text), float(upper_bound_text), n)
 
     # Perform Simpson's rule integration
     simpson_result = simpsons_rule_integration(lambda x: user_function, float(lower_bound_text), float(upper_bound_text), n)
