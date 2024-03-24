@@ -58,11 +58,11 @@ def main():
     num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=2000, value=1000)
     x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
     y_values = [user_function.subs('x', val) for val in x_values]
-    simpson_result = simps(y_values, x_values)
-
     
+    simpson_result = simps(y_values, x_values)
     mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
-    secret_result = 1
+    sympy_integrate_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text))).evalf()
+    quad_result, quad_error = quad(user_function, float(lower_bound_text), float(upper_bound_text))
 
     data = {
         'Method': ['Simpson', 'Mid-Rectangle'],
