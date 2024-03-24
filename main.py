@@ -3,6 +3,7 @@ import numpy as np
 from sympy import sympify, symbols, pi, exp, integrate, SympifyError
 from scipy.integrate import simps, quad
 import pandas as pd
+from rich import print
 
 def custom_midpoint_integration(func, a, b, n):
     """
