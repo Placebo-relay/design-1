@@ -8,9 +8,23 @@ def main():
     # Input box for the user-defined function
     function_str = st.text_input('Enter the function (use x as the variable):', 'x**2')
 
+    try:
+        user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
+        st.write("Parsed function:", user_function)
+    except Exception as e:
+        st.write("Invalid input:", e)
+
     # Input boxes for lower and upper bounds
     lower_bound_str = st.text_input('Enter the lower bound:', '0')
-    upper_bound_str = st.text_input('Enter the upper bound:', '1')
+    upper_bound_str = st.text_input('Enter the upper bound:', '2*pi')
+
+    try:
+        lower_bound = sympify(lower_bound_str, locals={"pi": pi, "exp": exp})
+        upper_bound = sympify(upper_bound_str, locals={"pi": pi, "exp": exp})
+        st.write("Parsed lower bound:", lower_bound)
+        st.write("Parsed upper bound:", upper_bound)
+    except Exception as e:
+        st.write("Invalid input:", e)
 
     # Method selection
     method = st.selectbox('Select the method for integral calculation:', ['Simpson\'s Method', 'Mid-Rectangle Method'])
