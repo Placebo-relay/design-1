@@ -63,11 +63,14 @@ def calculate_integral(function_str, lower_bound_str, upper_bound_str, method):
         st.write('Error: Invalid input. Please enter a valid function and bounds.')
 
 def simpsons_method(f, a, b, n=100):
-    x = np.linspace(a, b, n+1)
-    y = f.subs('x', x)
-    h = (b - a) / n
-    result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
-    return result
+    try:
+        x = np.linspace(a, b, n+1)
+        y = f.subs('x', x)
+        h = (b - a) / n
+        result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
+        return result
+    except (sp.SympifyError, ValueError) as e:
+        st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}'
 
 def mid_rectangle_method(f, a, b, n=100):
     h = (b - a) / n
