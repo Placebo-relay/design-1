@@ -68,8 +68,8 @@ def main():
         'Result': [sympy_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
     }
     df = pd.DataFrame(data)
-    df['% Difference'] = 100 * abs(df['Result'] - sympy_result) / sympy_result
-    df['% Difference'] = df['% Difference'].evalf()
+    df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf()) / sympy_result.evalf()
+    #df['% Difference'] = df['% Difference']
     st.write("Integration Results:")
     st.dataframe(df.sort_values(by='% Difference'), hide_index=True)
 
