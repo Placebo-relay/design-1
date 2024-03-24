@@ -23,10 +23,10 @@ def main():
     upper_bound_str = st.text_input('Enter the upper bound:', '2*pi')
 
     try:
-        lower_bound = sympify(lower_bound_str, locals={"pi": pi, "exp": exp})
-        upper_bound = sympify(upper_bound_str, locals={"pi": pi, "exp": exp})
-        st.write("Parsed lower bound:", lower_bound)
-        st.write("Parsed upper bound:", upper_bound)
+        lower_bound_text = sympify(lower_bound_str, locals={"pi": pi, "exp": exp})
+        upper_bound_text = sympify(upper_bound_str, locals={"pi": pi, "exp": exp})
+        st.write("Parsed lower bound:", lower_bound_text)
+        st.write("Parsed upper bound:", upper_bound_text)
     except Exception as e:
         st.write("Invalid input:", e)
 
@@ -68,8 +68,8 @@ def calculate_integral(user_function, lower_bound_str, upper_bound_str, method):
         function = sympify(user_function)
 
         # Convert the bounds to numerical values
-        lower_bound = float(lower_bound)
-        upper_bound = float(upper_bound)
+        lower_bound = float(lower_bound_str)
+        upper_bound = float(upper_bound_str)
 
         # Perform integral calculation based on the selected method
         if method == 'Simpson\'s Method':
