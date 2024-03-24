@@ -65,7 +65,7 @@ def calculate_integral(function_str, lower_bound_str, upper_bound_str, method):
 def simpsons_method(f, a, b, n=100):
     try:
         x = np.linspace(a, b, n+1)
-        y = f.subs('x', x)
+        y = [f.subs('x', xi) for xi in x]  # Evaluate the function at each x value
         h = (b - a) / n
         result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
         return result
