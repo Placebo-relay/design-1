@@ -66,7 +66,7 @@ def calculate_integral(user_function, lower_bound_str, upper_bound_str, method):
     try:
         # Parse the user-defined function using SymPy
         x = symbols('x')
-        function = sympify(user_function)
+        function = user_function
 
         # Convert the bounds to numerical values
         lower_bound = float(lower_bound_str.evalf())
