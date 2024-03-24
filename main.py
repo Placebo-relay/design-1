@@ -79,9 +79,8 @@ def main():
     try:
         lower_bound_text = sympify(lower_bound_str, locals={"pi": pi, "exp": exp})
         upper_bound_text = sympify(upper_bound_str, locals={"pi": pi, "exp": exp})
-        col1, col2 = st.columns(2)
-        with col1: st.write("Parsed lower bound:", lower_bound_text)
-        with col2: st.write("Parsed upper bound:", upper_bound_text)
+        st.sidebar.sucess("Parsed lower bound:", lower_bound_text)
+        st.sidebar.success("Parsed upper bound:", upper_bound_text)
     except Exception as e:
         st.write("Invalid input in bound section:", e)
 
