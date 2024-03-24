@@ -93,7 +93,7 @@ def main():
     mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
     sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text)))
     with col02: st.write(sympy_result)
-    integral_latex = latex(Integral(user_function, (x, lower_bound, upper_bound)))
+    integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
     st.latex(integral_latex)
     
     data = {
