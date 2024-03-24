@@ -18,7 +18,7 @@ def custom_midpoint_integration(func, a, b, n):
     """
     h = (b - a) / n  # Width of each subinterval
     result = 0
-    x = sp.symbols('x')  # Define the symbol for the variable
+    x = symbols('x')  # Define the symbol for the variable
     for i in range(n):
         midpoint = a + (i + 0.5) * h  # Midpoint of the subinterval
         result += func.subs(x, midpoint)  # Evaluate the function at the midpoint using sympy
