@@ -31,6 +31,8 @@ def main():
 
     # Input box for the user-defined function
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
+    if st.sidebar.checkbox("Apply Function"):
+        user_input = 'exp(3)*(x**6+x**5)**0.2'
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
