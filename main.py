@@ -54,6 +54,7 @@ def main():
     st.title('Integral Calculator')
 
     # Input box for the user-defined function
+    st.sidebar.write('Use exp() and pi in Function and Bounds\n', 'exp(3)*(x**6+x**5)**0.2')
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
     secret_text = sympify('exp(3)*(x**6+x**5)**0.2', locals={"pi": pi, "exp": exp})
     st.sidebar.write('my_function is', secret_text)
@@ -71,7 +72,6 @@ def main():
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
 
-    st.sidebar.write('Use exp(3) and pi. F.e. 3*pi*exp(3)')
     lower_bound_str = st.sidebar.text_input('Enter the lower bound:', '0')
     upper_bound_str = st.sidebar.text_input('Enter the upper bound:', '2*pi')
 
