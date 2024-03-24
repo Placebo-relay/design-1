@@ -54,6 +54,7 @@ def main():
     st.title('Integral Calculator')
 
     # Input box for the user-defined function
+    st.sidebar.write('# 1')
     st.sidebar.write('Use exp() and pi in Function and Bounds')
     st.sidebar.info('Example: exp(3)*(x**6+x**5)**0.2')
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
