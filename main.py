@@ -15,6 +15,10 @@ def main():
         st.write("Invalid input:", e)
 
     # Input boxes for lower and upper bounds
+    x = symbols('x')
+    pi_symbol = symbols('pi')
+    exp_symbol = symbols('exp')
+    
     lower_bound_str = st.text_input('Enter the lower bound:', '0')
     upper_bound_str = st.text_input('Enter the upper bound:', '2*pi')
 
