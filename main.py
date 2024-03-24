@@ -70,7 +70,8 @@ def main():
     x = symbols('x')
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
-    
+
+    st.sidebar.write('Use exp(3) and pi. F.e. 3*pi*exp(3)')
     lower_bound_str = st.sidebar.text_input('Enter the lower bound:', '0')
     upper_bound_str = st.sidebar.text_input('Enter the upper bound:', '2*pi')
 
