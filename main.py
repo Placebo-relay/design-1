@@ -67,7 +67,7 @@ def main():
         st.write("Invalid input:", e)
 
     # Input boxes for lower and upper bounds
-    st.sidebar.success(f'Use any bounds like: exp(3)*0.5*pi + 2')
+    st.sidebar.success(f'Use any bounds like: exp(3) * 0.5 * pi + 2')
     x = symbols('x')
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
