@@ -73,7 +73,7 @@ def main():
     #df['Result'] = df['Result'].apply(lambda x: format(x, '.15f'))
     #df['% Difference'] = df['% Difference'].apply(lambda x: format(x, '.15f')) 
     st.write("Integration Results:")
-    st.dataframe(df.sort_values(by='% Difference'), hide_index=True)
+    st.dataframe(df, hide_index=True)
 
 if __name__ == '__main__':
     main()
