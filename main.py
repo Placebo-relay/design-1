@@ -36,6 +36,7 @@ def main():
     y_values = [user_function.subs('x', val) for val in x_values]
     simpson_result = simps(y_values, x_values)
     midrectangle_result = midpoint(user_function, float(lower_bound_text), float(upper_bound_text))
+    secret_result = 1
 
     data = {
         'Method': ['Simpson', 'Mid-Rectangle'],
