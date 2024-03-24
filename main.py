@@ -33,8 +33,9 @@ def main():
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
         st.write("Parsed function:", user_function)
-    except Exception as e:
-        st.write("Invalid input:", e)
+    except SympifyError as e:
+        st.write("Invalid input for function:", e)
+        return  # Exit the function if there's an error
 
     # Input boxes for lower and upper bounds
     x = symbols('x')
@@ -49,8 +50,9 @@ def main():
         upper_bound_text = sympify(upper_bound_str, locals={"pi": pi, "exp": exp})
         st.write("Parsed lower bound:", lower_bound_text)
         st.write("Parsed upper bound:", upper_bound_text)
-    except Exception as e:
+    except SympifyError as e:
         st.write("Invalid input in bound section:", e)
+        return  # Exit the function if there's an error
 
     # Calculate the integral using different methods
     n = 100  # Number of subintervals for midpoint rectangle and Simpson's rule
@@ -59,10 +61,10 @@ def main():
     definite_result = integrate(user_function, (x, lower_bound_text, upper_bound_text))
 
     # Perform midpoint rectangle method integration
-    midpoint_result = midpoint_rectangle_integration(lambda x: user_function.subs(x, x), float(lower_bound_text), float(upper_bound_text), n)
+    midpoint_result = midpoint_rectangle_integration(lambda x: user_function, float(lower_bound_text), float(upper_bound_text), n)
 
     # Perform Simpson's rule integration
-    simpson_result = simpsons_rule_integration(lambda x: user_function.subs(x, x), float(lower_bound_text), float(upper_bound_text), n)
+    simpson_result = simpsons_rule_integration(lambda x: user_function, float(lower_bound_text), float(upper_bound_text), n)
 
     # Display the results in a dataframe
     results_df = pd.DataFrame({
