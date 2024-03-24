@@ -70,7 +70,7 @@ def simpsons_method(f, a, b, n=100):
         result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
         return result
     except (sp.SympifyError, ValueError) as e:
-        st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}'
+        st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}')
 
 def mid_rectangle_method(f, a, b, n=100):
     h = (b - a) / n
