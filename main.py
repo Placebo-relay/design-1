@@ -62,7 +62,7 @@ def main():
     simpson_result = simps(y_values, x_values)
     mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
     sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text))).evalf()
-    #quad_result, quad_error = quad(user_function, float(lower_bound_text), float(upper_bound_text))
+    quad_result, quad_error = quad(user_function, float(lower_bound_text).evalf(), float(upper_bound_text).evalf())
 
     data = {
         'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
