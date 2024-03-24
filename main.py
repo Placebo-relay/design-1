@@ -71,7 +71,7 @@ def main():
     df = pd.DataFrame(data)
     df['% Difference'] = 100 * abs(df['Result'] - sympy_result / sympy_result)
     st.write("Integration Results:")
-    st.write(df)
+    st.dataframe(df, hide_index=True)
 
 if __name__ == '__main__':
     main()
