@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import sympy as sp
+from sympy import sympify, symbols, pi, exp, SympifyError
 
 def main():
     st.title('Integral Calculator')
@@ -43,7 +43,7 @@ def simpsons_method(f, a, b, n=100):
         h = (b - a) / n
         result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
         return result
-    except (sp.SympifyError, ValueError) as e:
+    except (SympifyError, ValueError) as e:
         st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}')
             """)
 
@@ -60,8 +60,8 @@ def mid_rectangle_method(f, a, b, n=100):
 def calculate_integral(function_str, lower_bound_str, upper_bound_str, method):
     try:
         # Parse the user-defined function using SymPy
-        x = sp.symbols('x')
-        function = sp.sympify(function_str)
+        x = symbols('x')
+        function = sympify(function_str)
 
         # Convert the bounds to numerical values
         lower_bound = float(lower_bound_str)
@@ -76,7 +76,7 @@ def calculate_integral(function_str, lower_bound_str, upper_bound_str, method):
         # Display the result to the user
         st.write(f'The result of the integral using {method} is: {result}')
 
-    except (sp.SympifyError, ValueError) as e:
+    except (SympifyError, ValueError) as e:
         st.write('Error: Invalid input. Please enter a valid function and bounds.')
 
 def simpsons_method(f, a, b, n=100):
@@ -86,7 +86,7 @@ def simpsons_method(f, a, b, n=100):
         h = (b - a) / n
         result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
         return result
-    except (sp.SympifyError, ValueError) as e:
+    except (SympifyError, ValueError) as e:
         st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}')
 
 def mid_rectangle_method(f, a, b, n=100):
