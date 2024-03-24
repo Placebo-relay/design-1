@@ -7,7 +7,7 @@ def main():
     st.title('Integral Calculator')
 
     # Input box for the user-defined function
-    user_input = st.text_input('Enter the function (use x, exp and pi):', 'x**2')
+    user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
@@ -20,8 +20,8 @@ def main():
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
     
-    lower_bound_str = st.text_input('Enter the lower bound:', '0')
-    upper_bound_str = st.text_input('Enter the upper bound:', '2*pi')
+    lower_bound_str = st.sidebar.text_input('Enter the lower bound:', '0')
+    upper_bound_str = st.sidebar.text_input('Enter the upper bound:', '2*pi')
 
     try:
         lower_bound_text = sympify(lower_bound_str, locals={"pi": pi, "exp": exp})
