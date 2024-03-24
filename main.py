@@ -23,11 +23,14 @@ def main():
             st.subheader('Code Snippet for Simpson\'s Method')
             st.code("""
 def simpsons_method(f, a, b, n=100):
-    x = np.linspace(a, b, n+1)
-    y = [f.subs('x', xi) for xi in x]
-    h = (b - a) / n
-    result = (h / 3) * (y[0] + 4 * sum(y[i] for i in range(1, n, 2)) + 2 * sum(y[i] for i in range(2, n-1, 2)) + y[n])
-    return result
+    try:
+        x = np.linspace(a, b, n+1)
+        y = [f.subs('x', xi) for xi in x]  # Evaluate the function at each x value
+        h = (b - a) / n
+        result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
+        return result
+    except (sp.SympifyError, ValueError) as e:
+        st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}')
             """)
 
         elif method == 'Mid-Rectangle Method':
