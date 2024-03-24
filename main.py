@@ -69,8 +69,8 @@ def calculate_integral(user_function, lower_bound_str, upper_bound_str, method):
         function = sympify(user_function)
 
         # Convert the bounds to numerical values
-        lower_bound = float(lower_bound_str)
-        upper_bound = float(upper_bound_str)
+        lower_bound = float(lower_bound_str.evalf())
+        upper_bound = float(upper_bound_str.evalf())
 
         # Perform integral calculation based on the selected method
         if method == 'Simpson\'s Method':
