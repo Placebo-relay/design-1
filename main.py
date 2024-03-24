@@ -55,7 +55,7 @@ def main():
 
     st.sidebar.title('Allowed: exp(), pi')
     # Input box for the user-defined function
-    st.sidebar.info('Example fn: exp(3)*(x**6+x**5)**0.2')
+    st.sidebar.info('Example fn: exp(3)*(x **6 + x **5)**0.2')
     user_input = st.sidebar.text_input('Enter the function, use x:', 'x**2')
     if st.sidebar.checkbox('Apply Example function'):
         user_input = 'exp(3)*(x**6+x**5)**0.2'
