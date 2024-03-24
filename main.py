@@ -83,7 +83,7 @@ def main():
     except Exception as e:
         st.write("Invalid input in bound section:", e)
 
-    num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=2000, value=1000, step = 100)
+    num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
     x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
     y_values = [user_function.subs('x', val) for val in x_values]
     
