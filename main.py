@@ -27,6 +27,30 @@ def custom_midpoint_integration(func, a, b, n):
     return result
 
 def main():
+    hide_menu = """
+    <style>
+    header {
+        visibility: hidden;
+    }
+    #MainMenu {
+        visibility: hidden;
+    }
+    
+    footer {
+        visibility: hidden;
+    }
+    footer:after{
+        visibility: visible;
+        Content:"Demo for ikt_PRO. Copyright @ 2023";
+        display: block;
+        position: relative;
+        padding: 5px;
+        top:3px;
+        color: tomato;
+        text-align: left;
+    </style>
+    """
+    st.markdown(hide_menu, unsafe_allow_html=True)
     st.title('Integral Calculator')
 
     # Input box for the user-defined function
