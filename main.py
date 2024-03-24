@@ -32,7 +32,8 @@ def main():
     # Input box for the user-defined function
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
     secret_text = sympify('exp(3)*(x**6+x**5)**0.2', locals={"pi": pi, "exp": exp})
-    if st.sidebar.checkbox(secret_text):
+    st.sidebar.write('my_function is', secret_text)
+    if st.sidebar.checkbox('Apply my_function'):
         user_input = 'exp(3)*(x**6+x**5)**0.2'
 
     try:
