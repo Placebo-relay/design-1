@@ -91,7 +91,8 @@ def main():
     
     simpson_result = simpson(y_values, x_values)
     mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
-    sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text))).evalf()
+    sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text)))
+    with col02: st.write(sympy_result)
     
     data = {
         'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
