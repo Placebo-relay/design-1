@@ -6,10 +6,10 @@ def main():
     st.title('Integral Calculator')
 
     # Input box for the user-defined function
-    function_str = st.text_input('Enter the function (use x as the variable):', 'x**2')
+    user_input = st.text_input('Enter the function (use x as the variable):', 'x**2')
 
     try:
-        user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
+        function_str = sympify(user_input, locals={"pi": pi, "exp": exp})
         st.write("Parsed function:", user_function)
     except Exception as e:
         st.write("Invalid input:", e)
