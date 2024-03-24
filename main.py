@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 from sympy import sympify, symbols, pi, exp, integrate, SympifyError
-from scipy.integrate import simps, quad
+from scipy.integrate import simpson
 import pandas as pd
 
 def custom_midpoint_integration(func, a, b, n):
@@ -59,7 +59,7 @@ def main():
     x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
     y_values = [user_function.subs('x', val) for val in x_values]
     
-    simpson_result = simps(y_values, x_values)
+    simpson_result = simpson(y_values, x_values)
     mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
     sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text))).evalf()
     
