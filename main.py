@@ -1,7 +1,28 @@
 import streamlit as st
 import numpy as np
 from sympy import sympify, symbols, pi, exp, integrate, SympifyError
-from scipy.integrate import simps, midpoint
+from scipy.integrate import simps, quad
+
+def custom_midpoint_integration(func, a, b, n):
+    """
+    Custom midpoint integration function to approximate the definite integral of a function.
+
+    Parameters:
+    func (function): The function to be integrated.
+    a (float): The lower bound of the interval.
+    b (float): The upper bound of the interval.
+    n (int): The number of subintervals.
+
+    Returns:
+    float: The approximate value of the definite integral.
+    """
+    h = (b - a) / n  # Width of each subinterval
+    result = 0
+    for i in range(n):
+        midpoint = a + (i + 0.5) * h  # Midpoint of the subinterval
+        result += func(midpoint)  # Evaluate the function at the midpoint
+    integration_result *= h  # Multiply by the width of the subintervals
+    return integration_result
 
 def main():
     st.title('Integral Calculator')
@@ -32,10 +53,13 @@ def main():
     except Exception as e:
         st.write("Invalid input in bound section:", e)
 
-    x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), 1000)
+    num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=2000, value=1000)
+    x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
     y_values = [user_function.subs('x', val) for val in x_values]
     simpson_result = simps(y_values, x_values)
-    midrectangle_result = midpoint(user_function, float(lower_bound_text), float(upper_bound_text))
+
+    
+    midrectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
     secret_result = 1
 
     data = {
