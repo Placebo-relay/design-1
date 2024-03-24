@@ -55,7 +55,7 @@ def main():
 
     # Input box for the user-defined function
     st.sidebar.write('Use exp() and pi in Function and Bounds')
-    st.success('exp(3)*(x**6+x**5)**0.2')
+    st.sidebar.success('exp(3)*(x**6+x**5)**0.2')
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
     secret_text = sympify('exp(3)*(x**6+x**5)**0.2', locals={"pi": pi, "exp": exp})
     st.sidebar.write('my_function is', secret_text)
