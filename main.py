@@ -53,9 +53,9 @@ def main():
     st.markdown(hide_menu, unsafe_allow_html=True)
     st.title('Integral Calculator')
 
+    st.sidebar.title('Allowed: exp(), pi')
     # Input box for the user-defined function
-    st.sidebar.write('Allowed: exp(), pi')
-    st.sidebar.info('Example: exp(3)*(x**6+x**5)**0.2')
+    st.sidebar.info('Example fn: exp(3)*(x**6+x**5)**0.2')
     user_input = st.sidebar.text_input('Enter the function, use x:', 'x**2')
     if st.sidebar.checkbox('Apply Example function'):
         user_input = 'exp(3)*(x**6+x**5)**0.2'
