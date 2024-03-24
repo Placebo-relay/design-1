@@ -55,10 +55,9 @@ def main():
 
     # Input box for the user-defined function
     st.sidebar.write('Use exp() and pi in Function and Bounds')
-    st.sidebar.success('Example: exp(3)*(x**6+x**5)**0.2')
+    st.sidebar.info('Example: exp(3)*(x**6+x**5)**0.2')
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
     if st.sidebar.checkbox('Apply Example function'):
-        st.info('The app will solve integral for Example function')
         user_input = 'exp(3)*(x**6+x**5)**0.2'
 
     try:
@@ -68,7 +67,7 @@ def main():
         st.write("Invalid input:", e)
 
     # Input boxes for lower and upper bounds
-    st.sidebar.success(f'Use any bounds like: exp(3) * 0.5 * pi + 2')
+    st.sidebar.info(f'Bounds example: exp(3) * 0.5 * pi + 2')
     x = symbols('x')
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
