@@ -81,7 +81,7 @@ def calculate_integral(user_function, lower_bound_str, upper_bound_str, method):
         st.write(f'The result of the integral using {method} is: {result}')
 
     except (SympifyError, ValueError) as e:
-        st.write('Error: Invalid input. Please enter a valid function and bounds.')
+        st.write('Error: Invalid input. Please enter a valid function and bounds.', e)
 
 def simpsons_method(f, a, b, n=100):
     try:
