@@ -58,6 +58,7 @@ def main():
     st.sidebar.success('Example: exp(3)*(x**6+x**5)**0.2')
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
     if st.sidebar.checkbox('Apply Example function'):
+        st.info('The app will solve integral for Example function')
         user_input = 'exp(3)*(x**6+x**5)**0.2'
 
     try:
