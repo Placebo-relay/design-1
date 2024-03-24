@@ -1,12 +1,34 @@
 import streamlit as st
 import numpy as np
+import pandas as pd
 from sympy import sympify, symbols, pi, exp, integrate, SympifyError
+
+def midpoint_rectangle_integration(f, a, b, n):
+    # Calculate the width of each subinterval
+    dx = (b - a) / n
+    # Calculate the midpoint of each subinterval
+    x_midpoints = np.linspace(a + 0.5*dx, b - 0.5*dx, n)
+    # Evaluate the function at the midpoints and sum the areas of the rectangles
+    return dx * np.sum(f(x_midpoints))
+
+def simpsons_rule_integration(f, a, b, n):
+    # Calculate the width of each subinterval
+    dx = (b - a) / n
+    # Generate the x values at the endpoints and midpoints of the subintervals
+    x = np.linspace(a, b, n+1)
+    # Calculate the weights for the Simpson's rule
+    w = np.full(n+1, 1)
+    w[1:-1:2] = 4
+    w[2:-1:2] = 2
+    w *= dx / 3
+    # Evaluate the function at the x values and calculate the integral using Simpson's rule
+    return np.sum(w * f(x))
 
 def main():
     st.title('Integral Calculator')
 
     # Input box for the user-defined function
-    user_input = st.text_input('Enter the function (use x as the variable):', 'x**2')
+    user_input = st.text_input('Enter the function (use x, exp and pi):', 'x**2')
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
@@ -30,78 +52,24 @@ def main():
     except Exception as e:
         st.write("Invalid input in bound section:", e)
 
-    # Method selection
-    method = st.selectbox('Select the method for integral calculation:', ['Simpson\'s Method', 'Mid-Rectangle Method'])
+    # Calculate the integral using different methods
+    n = 100  # Number of subintervals for midpoint rectangle and Simpson's rule
 
-    if st.button('Calculate Integral'):
-        # Call the function to calculate the integral
-        calculate_integral(user_function, lower_bound_str, upper_bound_str, method)
-                # Showcase the code snippets for the selected method
-        if method == 'Simpson\'s Method':
-            st.subheader('Code Snippet for Simpson\'s Method')
-            st.code("""
-def simpsons_method(f, a, b, n=100):
-    try:
-        x = np.linspace(a, b, n+1)
-        y = [f.subs('x', xi) for xi in x]  # Evaluate the function at each x value
-        h = (b - a) / n
-        result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
-        return result
-    except (SympifyError, ValueError) as e:
-        st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}')
-            """)
+    # Perform definite integration
+    definite_result = integrate(user_function, (x, lower_bound_text, upper_bound_text))
 
-        elif method == 'Mid-Rectangle Method':
-            st.subheader('Code Snippet for Mid-Rectangle Method')
-            st.code("""
-def mid_rectangle_method(f, a, b, n=100):
-    h = (b - a) / n
-    result = sum(f.subs('x', a + (i + 0.5) * h) for i in range(n)) * h
-    return result
-            """)
-        result = integrate(user_function, (x, lower_bound, upper_bound))
-        st.write("Result of integration via sympy.integrate:", result.evalf())
+    # Perform midpoint rectangle method integration
+    midpoint_result = midpoint_rectangle_integration(lambda x: user_function.subs(x, x), float(lower_bound_text), float(upper_bound_text), n)
 
-def calculate_integral(user_function, lower_bound_str, upper_bound_str, method):
-    try:
-        # Parse the user-defined function using SymPy
-        x = symbols('x')
-        function = user_function
+    # Perform Simpson's rule integration
+    simpson_result = simpsons_rule_integration(lambda x: user_function.subs(x, x), float(lower_bound_text), float(upper_bound_text), n)
 
-        # Convert the bounds to numerical values
-        lower_bound = float(lower_bound_str.evalf())
-        upper_bound = float(upper_bound_str.evalf())
-
-        # Perform integral calculation based on the selected method
-        if method == 'Simpson\'s Method':
-            result = simpsons_method(function, lower_bound, upper_bound)
-        elif method == 'Mid-Rectangle Method':
-            result = mid_rectangle_method(function, lower_bound, upper_bound)
-
-        # Display the result to the user
-        st.write(f'The result of the integral using {method} is: {result}')
-
-    except (SympifyError, ValueError) as e:
-        st.write('Error: Invalid input. Please enter a valid function and bounds.', e)
-
-def simpsons_method(f, a, b, n=100):
-    try:
-        x = np.linspace(a, b, n+1)
-        y = [f.subs('x', xi) for xi in x]  # Evaluate the function at each x value
-        h = (b - a) / n
-        result = (h / 3) * np.sum(y[0:-1:2] + 4*y[1::2] + y[2::2])
-        return result
-    except (SympifyError, ValueError) as e:
-        st.write(f'Error: Invalid input. Please enter a valid function and bounds. Details: {e}')
-
-def mid_rectangle_method(f, a, b, n=100):
-    h = (b - a) / n
-    result = 0
-    for i in range(n):
-        result += f.subs('x', a + (i + 0.5) * h)
-    result *= h
-    return result
+    # Display the results in a dataframe
+    results_df = pd.DataFrame({
+        'Method': ['Definite', 'Midpoint Rectangle', 'Simpson\'s Rule'],
+        'Result': [definite_result, midpoint_result, simpson_result]
+    })
+    st.write(results_df)
 
 if __name__ == '__main__':
     main()
-  
