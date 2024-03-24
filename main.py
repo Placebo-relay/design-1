@@ -3,26 +3,9 @@ import numpy as np
 from sympy import sympify, symbols, pi, exp, integrate, SympifyError
 from scipy.integrate import simps, quad
 
-def custom_midpoint_integration(func, a, b, n):
-    """
-    Custom midpoint integration function to approximate the definite integral of a function.
+    result += func(midpoint)  # Evaluate the function at the midpoint
 
-    Parameters:
-    func (function): The function to be integrated.
-    a (float): The lower bound of the interval.
-    b (float): The upper bound of the interval.
-    n (int): The number of subintervals.
-
-    Returns:
-    float: The approximate value of the definite integral.
-    """
-    h = (b - a) / n  # Width of each subinterval
-    result = 0
-    for i in range(n):
-        midpoint = a + (i + 0.5) * h  # Midpoint of the subinterval
-        result += func(midpoint)  # Evaluate the function at the midpoint
-    integration_result *= h  # Multiply by the width of the subintervals
-    return integration_result
+TypeError: 'Pow' object is not callable
 
 def main():
     st.title('Integral Calculator')
