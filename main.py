@@ -55,11 +55,9 @@ def main():
 
     # Input box for the user-defined function
     st.sidebar.write('Use exp() and pi in Function and Bounds')
-    st.sidebar.success('exp(3)*(x**6+x**5)**0.2')
+    st.sidebar.success('Example: exp(3)*(x**6+x**5)**0.2')
     user_input = st.sidebar.text_input('Enter the function (use x, exp and pi):', 'x**2')
-    secret_text = sympify('exp(3)*(x**6+x**5)**0.2', locals={"pi": pi, "exp": exp})
-    st.sidebar.write('my_function is', secret_text)
-    if st.sidebar.checkbox('Apply my_function'):
+    if st.sidebar.checkbox('Apply Example function'):
         user_input = 'exp(3)*(x**6+x**5)**0.2'
 
     try:
@@ -69,10 +67,11 @@ def main():
         st.write("Invalid input:", e)
 
     # Input boxes for lower and upper bounds
+    st.sidebar.success('Use any bounds: exp(3)*0.5*pi')
     x = symbols('x')
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
-
+    
     lower_bound_str = st.sidebar.text_input('Enter the lower bound:', '0')
     upper_bound_str = st.sidebar.text_input('Enter the upper bound:', '2*pi')
 
