@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from sympy import sympify, symbols, pi, exp, SympifyError
+from sympy import sympify, symbols, pi, exp, integrate, SympifyError
 
 def main():
     st.title('Integral Calculator')
@@ -28,7 +28,7 @@ def main():
         st.write("Parsed lower bound:", lower_bound_text)
         st.write("Parsed upper bound:", upper_bound_text)
     except Exception as e:
-        st.write("Invalid input:", e)
+        st.write("Invalid input in bound section:", e)
 
     # Method selection
     method = st.selectbox('Select the method for integral calculation:', ['Simpson\'s Method', 'Mid-Rectangle Method'])
@@ -59,7 +59,8 @@ def mid_rectangle_method(f, a, b, n=100):
     result = sum(f.subs('x', a + (i + 0.5) * h) for i in range(n)) * h
     return result
             """)
-
+        result = integrate(user_function, (x, lower_bound, upper_bound))
+        st.write("Result of integration via sympy.integrate:", result.evalf())
 
 def calculate_integral(user_function, lower_bound_str, upper_bound_str, method):
     try:
