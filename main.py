@@ -60,7 +60,7 @@ def main():
     simpson_result = simps(y_values, x_values)
 
     
-    midrectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
+    mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
     secret_result = 1
 
     data = {
