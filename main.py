@@ -66,7 +66,7 @@ def main():
 
     data = {
         'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
-        'Result': [sympy_result, simpson_result, mid_rectangle_result]
+        'Result': [sympy_result, simpson_result.evalf(), mid_rectangle_result.evalf()]
     }
     df = pd.DataFrame(data)
     df['% Difference'] = 100 * abs(df['Result'] - sympy_result) / sympy_result
