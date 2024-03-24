@@ -70,6 +70,8 @@ def main():
     df = pd.DataFrame(data)
     df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf()) / sympy_result.evalf()
     #df['% Difference'] = df['% Difference']
+    df['Result'] = df['Result'].apply(lambda x: format(x, '.15f'))
+    df['% Difference'] = df['% Difference'].apply(lambda x: format(x, '.15f')) 
     st.write("Integration Results:")
     st.dataframe(df.sort_values(by='% Difference'), hide_index=True)
 
