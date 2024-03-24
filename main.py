@@ -9,7 +9,7 @@ def main():
     user_input = st.text_input('Enter the function (use x as the variable):', 'x**2')
 
     try:
-        function_str = sympify(user_input, locals={"pi": pi, "exp": exp})
+        user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
         st.write("Parsed function:", user_function)
     except Exception as e:
         st.write("Invalid input:", e)
@@ -35,7 +35,7 @@ def main():
 
     if st.button('Calculate Integral'):
         # Call the function to calculate the integral
-        calculate_integral(function_str, lower_bound_str, upper_bound_str, method)
+        calculate_integral(user_function, lower_bound_str, upper_bound_str, method)
                 # Showcase the code snippets for the selected method
         if method == 'Simpson\'s Method':
             st.subheader('Code Snippet for Simpson\'s Method')
@@ -61,11 +61,11 @@ def mid_rectangle_method(f, a, b, n=100):
             """)
 
 
-def calculate_integral(function_str, lower_bound_str, upper_bound_str, method):
+def calculate_integral(user_function, lower_bound_str, upper_bound_str, method):
     try:
         # Parse the user-defined function using SymPy
         x = symbols('x')
-        function = sympify(function_str)
+        function = sympify(user_function)
 
         # Convert the bounds to numerical values
         lower_bound = float(lower_bound_str)
