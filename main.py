@@ -70,6 +70,7 @@ def main():
     }
     df = pd.DataFrame(data)
     df['% Difference'] = 100 * abs(df['Result'] - sympy_result) / sympy_result
+    df['% Difference'] = df['% Difference'].round(2)
     st.write("Integration Results:")
     st.dataframe(df, hide_index=True)
 
