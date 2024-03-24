@@ -61,7 +61,7 @@ def main():
     
     simpson_result = simps(y_values, x_values)
     mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
-    sympy_integrate_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text))).evalf()
+    sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text))).evalf()
     #quad_result, quad_error = quad(user_function, float(lower_bound_text), float(upper_bound_text))
 
     data = {
@@ -69,7 +69,7 @@ def main():
         'Result': [simpson_result, mid_rectangle_result]
     }
     df = pd.DataFrame(data)
-    df['% Difference'] = 100 * abs(df['Result'] - secret_result / secret_result)
+    df['% Difference'] = 100 * abs(df['Result'] - sympy_result / sympy_result)
     st.write("Integration Results:")
     st.write(df)
 
