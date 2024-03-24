@@ -44,7 +44,6 @@ def main():
     }
     df = pd.DataFrame(data)
     df['% Difference'] = 100 * abs(df['Result'] - secret_result / secret_result)
-    st.write("Result of integration using Simpson's method:", result)
     st.write("Integration Results:")
     st.write(df)
 
