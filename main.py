@@ -65,11 +65,11 @@ def main():
     #quad_result, quad_error = quad(user_function, float(lower_bound_text), float(upper_bound_text))
 
     data = {
-        'Method': ['Simpson', 'Mid-Rectangle'],
-        'Result': [simpson_result, mid_rectangle_result]
+        'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
+        'Result': [sympy_result, simpson_result, mid_rectangle_result]
     }
     df = pd.DataFrame(data)
-    df['% Difference'] = 100 * abs(df['Result'] - sympy_result / sympy_result)
+    df['% Difference'] = 100 * abs(df['Result'] - sympy_result) / sympy_result
     st.write("Integration Results:")
     st.dataframe(df, hide_index=True)
 
