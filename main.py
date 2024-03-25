@@ -98,7 +98,7 @@ def main():
     result_latex_evalf = latex(sympy_result.evalf())
     st.latex(f"{integral_latex} = {result_latex} = {result_latex_evalf}")
 
-    if not st.sidebar.checkbox('get Complex bounds'):
+    if not st.sidebar.checkbox('get Complex/symbolic bounds'):
         num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
         #with col1: st.latex(integral_latex)
         x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
@@ -106,7 +106,7 @@ def main():
         simpson_result = simpson(y_values, x_values)
         mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
         #sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text)))
-        
+  
         data = {
             'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
             'Result': [sympy_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
@@ -118,6 +118,9 @@ def main():
         #df['% Difference'] = df['% Difference'].apply(lambda x: format(x, '.15f')) 
         st.write("Integration Results:")
         st.dataframe(df, hide_index=True)
+
+    else:
+        st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
 
 if __name__ == '__main__':
     main()
