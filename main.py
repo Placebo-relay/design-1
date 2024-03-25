@@ -25,6 +25,9 @@ def custom_midpoint_integration(func, a, b, n):
         result += func.subs(x, midpoint)  # Evaluate the function at the midpoint using sympy
     result *= h  # Multiply by the width of the subintervals
     return result
+    
+def custom_simpson_integration(func, a, b):
+    return (b-a)/6*(func(a)+func(b)+4*f((a+b)/2))
 
 def main():
     hide_menu = """
@@ -114,12 +117,13 @@ def main():
         x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
         y_values = [user_function.subs('x', val) for val in x_values]
         simpson_result = simpson(y_values, x_values)
+        ssimpson_result = custom_simpson_integration(user_function, float(lower_bound_text), float(upper_bound_text))
         mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
         #sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text)))
   
         data = {
-            'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
-            'Result': [sympy_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
+            'Method': ['Sympy', 'Simpson+', 'Simpson', 'Mid-Rectangle'],
+            'Result': [sympy_result.evalf(), ssimpson_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
         }
         df = pd.DataFrame(data)
         df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf()) / sympy_result.evalf()
