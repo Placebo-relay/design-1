@@ -64,7 +64,7 @@ def main():
     st.sidebar.header('⚙️')
     st.sidebar.write('This is an app to integrate custom function over custom bounds. Example fn is offered, on default gives more data: Simpson and Mid-rectangle methods.')
     st.sidebar.subheader('💡Use it:', divider='green')
-    st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
+    st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow, Abs')
     # Input box for the user-defined function
     x = symbols('x')
     pi_symbol = symbols('pi')
