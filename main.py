@@ -80,14 +80,12 @@ def main():
     try:
         lower_bound_text = sympify(lower_bound_str, locals={"pi": pi, "exp": exp})
         upper_bound_text = sympify(upper_bound_str, locals={"pi": pi, "exp": exp})
+        integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
+        st.sidebar.latex(integral_latex)
         #st.sidebar.write("Parsed lower bound:", lower_bound_text)
         #st.sidebar.write("Parsed upper bound:", upper_bound_text)
     except Exception as e:
         st.sidebar.error("Invalid input in bound section. Use any: pi, 3*pi/4, cos(pi/3).")
-
-    integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
-    st.sidebar.latex(integral_latex)
-    num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
 
     col1, _ = st.columns(2)
     
@@ -98,6 +96,7 @@ def main():
     st.latex(f"{integral_latex} = {result_latex} = {result_latex_evalf}")
 
     if not st.sidebar.checkbox('get Complex bounds'):
+        num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
         #with col1: st.latex(integral_latex)
         x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
         y_values = [user_function.subs('x', val) for val in x_values]
