@@ -89,12 +89,13 @@ def main():
 
     integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
     col1, _ = st.columns(2)
-    with col1: st.latex(integral_latex)
     
     if st.sidebar.checkbox('get Complex bounds'):
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
-        with col2: st.latex(integral_latex + '=' + str(sympy_result))
+        with col1: st.latex(f"\\int_{{{lower_bound_text}}}^{{{upper_bound_text}}} {user_function} \\,dx = {integral_latex} = {integral_latex.evalf()}")
+
     else:
+        with col1: st.latex(integral_latex)
         x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
         y_values = [user_function.subs('x', val) for val in x_values]
         simpson_result = simpson(y_values, x_values)
