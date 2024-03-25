@@ -99,7 +99,8 @@ def main():
     #sympy_result_evalf = sympy_result.evalf()
     result_latex = latex(sympy_result)
     result_latex_evalf = latex(sympy_result.evalf())
-    st.write(r"➡{integral_latex} = {result_latex} = \\\ {result_latex_evalf}")
+    test = latex(f"➡{integral_latex} = {result_latex} = \\\ {result_latex_evalf}")
+    st.write(test)
 
     if not st.sidebar.checkbox('get Complex/symbolic bounds'):
         num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
