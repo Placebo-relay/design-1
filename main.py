@@ -27,7 +27,7 @@ def custom_midpoint_integration(func, a, b, n):
     return result
     
 def custom_simpson_integration(func, a, b):
-    return (b-a)/6*(func(a)+func(b)+4*f((a+b)/2))
+    return (b-a)/6*(func(a)+func(b)+4*func((a+b)/2))
 
 def main():
     hide_menu = """
