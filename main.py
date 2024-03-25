@@ -67,10 +67,11 @@ def main():
     if st.sidebar.checkbox('Apply Example fn instead'):
         user_input = 'exp(3)*(x**6+x**5)**0.2'
 
+    col1, _ = st.columns(2)
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
         indef_integral = integrate(user_input, x)
-        st.latex(f"\\int_{{-\\infty}}^{{\\infty}} {latex(user_function)} \\,dx = {latex(indef_integral)}")
+        with col1: st.latex(f"\\int_{{-\\infty}}^{{\\infty}} {latex(user_function)} \\,dx = {latex(indef_integral)}")
 
     except Exception as e:
         st.write("Invalid input in 📈, please 1) use example, 2) try multiply x, x**2+x is better than x*(x+1)", e)
@@ -92,8 +93,6 @@ def main():
     except Exception as e:
         st.sidebar.error("Invalid input in ⬇️⬆️. Use any: pi, 3*pi/4, cos(pi/3).")
         st.sidebar.success('Allowed: exp(), pi, sin, cos, tan, I, Pow')
-
-    col1, _ = st.columns(2)
     
     sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
     #sympy_result_evalf = sympy_result.evalf()
