@@ -158,7 +158,7 @@ def main():
 #include <iostream>
 using namespace std;
 
-double custom_simpson_integration(double (*fn)(double), double a, double b) {
+double simpson_integration(double (*fn)(double), double a, double b) {
     return (b - a) / 6 * (fn(a) + 4 * fn((a + b) / 2) + fn(b));
 }
 """
@@ -168,7 +168,7 @@ double custom_simpson_integration(double (*fn)(double), double a, double b) {
 #include <iostream>
 using namespace std;
 
-double custom_midpoint_integration(double (*func)(double), double a, double b, int n) {
+double midpoint_integration(double (*func)(double), double a, double b, int n) {
     double h = (b - a) / n;
     double result = 0;
     for (int i = 0; i < n; i++) {
