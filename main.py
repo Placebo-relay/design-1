@@ -115,7 +115,7 @@ def main():
             'Result': [sympy_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
         }
         df = pd.DataFrame(data)
-        df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf(2)) / sympy_result.evalf(2)
+        df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf()) / sympy_result.evalf()
         #df['% Difference'] = df['% Difference']
         #df['Result'] = df['Result'].apply(lambda x: format(x, '.15f'))
         #df['% Difference'] = df['% Difference'].apply(lambda x: format(x, '.15f')) 
