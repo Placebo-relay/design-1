@@ -153,6 +153,35 @@ def main():
         st.code(simpson_rule_code, language='python')
         st.code(midpoint_rule_code, language='python')
 
+        # C++ code for Simpson's Rule
+        simpson_rule_code_cpp = """
+#include <iostream>
+using namespace std;
+
+double custom_simpson_integration(double (*fn)(double), double a, double b) {
+    return (b - a) / 6 * (fn(a) + 4 * fn((a + b) / 2) + fn(b));
+}
+"""
+
+# C++ code for Midpoint Rule
+        midpoint_rule_code_cpp = """
+#include <iostream>
+using namespace std;
+
+double custom_midpoint_integration(double (*func)(double), double a, double b, int n) {
+    double h = (b - a) / n;
+    double result = 0;
+    for (int i = 0; i < n; i++) {
+        double midpoint = a + (i + 0.5) * h;
+        result += func(midpoint);
+    }
+    result *= h;
+    return result;
+}
+"""
+        st.code(simpson_rule_code_cpp, language='cpp')
+        st.code(midpoint_rule_code_cpp, language='cpp')
+
     else:
         st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
 
