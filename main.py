@@ -53,7 +53,7 @@ def main():
     """
     st.markdown(hide_menu, unsafe_allow_html=True)
     st.title('Integral Calculator 🧮')
-    st.markdown("### > 👈 sidebar: 📄⚙️")
+    st.header("> 👈 sidebar: 📄⚙️", divider='rainbow')
 
     st.sidebar.title('Integral config.💡Use it:')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
@@ -79,7 +79,7 @@ def main():
     # Input boxes for lower and upper bounds
     st.sidebar.info(f'Bounds example: exp(3) * 0.5 * pi + 2')
 
-    st.sidebar.write('## ⬇️⬆️Bounds')
+    st.sidebar.subheader('⬇️⬆️Bounds', divider=True)
     lower_bound_str = st.sidebar.text_input('⬇️Enter the lower bound:', '0')
     upper_bound_str = st.sidebar.text_input('⬆️Enter the upper bound:', '2*pi')
 
