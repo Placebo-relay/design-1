@@ -74,9 +74,8 @@ def main():
         with col1: st.latex(f"\\int_{{-\\infty}}^{{\\infty}} {latex(user_function)} \\,dx = {latex(indef_integral)} + C")
 
     except Exception as e:
-        st.write("Invalid input in 📈, please 1) use example, 2) , x**2+x is better than x*(x+1)", e)
-        st.success("1) use example or 2) try simplify/multiply all x")
-        st.sidebar.error('Sorry, check the fn')
+        st.write("⚠️Invalid input in 📈)
+        st.sidebar.error('Sorry, check the fn, maybe multiply all x?')
 
     # Input boxes for lower and upper bounds
     st.sidebar.info(f'Bounds example: exp(3) * 0.5 * pi + 2')
