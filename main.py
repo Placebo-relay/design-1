@@ -27,7 +27,7 @@ def custom_midpoint_integration(func, a, b, n):
     return result
     
 def custom_simpson_integration(fn, a, b):
-    return (b-a)/6*(fn.subs(x, a)+fn.subs(x, b)+4*fn.subs(x, (a+b)/2))
+    return (b-a)/6*(fn.evalf(subs={x: a}) + fn.evalf(subs={x: b}) + 4*fn.evalf(subs={x: (a+b)/2}))
 
 def main():
     hide_menu = """
