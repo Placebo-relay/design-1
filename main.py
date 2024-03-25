@@ -66,7 +66,7 @@ def main():
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
-        indef_integral = integrate(user_function, x)
+        indef_integral = integrate(user_input, x)
         st.latex(f"\\int_{{-\\infty}}^{{\\infty}} {latex(user_input)} \\,dx = {latex(indef_integral)}")
 
     except Exception as e:
