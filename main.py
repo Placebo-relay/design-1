@@ -66,8 +66,8 @@ def main():
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
-        ind_integral = integrate(user_function, symbols('x'))
-        st.latex(f"The indefinite integral of ${latex(user_function)}$ is ${latex(ind_integral)} + C$")
+        indef_integral = sp.integrate(f, x)
+        st.latex(f"\\int_{{-\\infty}}^{{\\infty}} {sp.latex(user_function)} \\,dx = {sp.latex(indef_integral)}")
 
     except Exception as e:
         st.write("Invalid input in 📈, please 1) use example, 2) try multiply x, x**2+x is better than x*(x+1)", e)
