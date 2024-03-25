@@ -121,7 +121,7 @@ def main():
         st.dataframe(df, hide_index=True)
 
     else:
-        st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or even oo with -oo to solve without numbers')
+        st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
 
 if __name__ == '__main__':
     main()
