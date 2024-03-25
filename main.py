@@ -26,8 +26,8 @@ def custom_midpoint_integration(func, a, b, n):
     result *= h  # Multiply by the width of the subintervals
     return result
     
-def custom_simpson_integration(func, a, b):
-    return (b-a)/6*(func(a)+func(b)+4*func((a+b)/2))
+def custom_simpson_integration(fn, a, b):
+    return (b-a)/6*(fn(a)+fn(b)+4*fn((a+b)/2))
 
 def main():
     hide_menu = """
