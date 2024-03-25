@@ -66,7 +66,7 @@ def main():
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
 
     except Exception as e:
-        st.write("Invalid input:", e)
+        st.write("Invalid input in Function, please 1) use example, 2) try multiply x, x**2+x is better than x*(x+1)", e)
 
     # Input boxes for lower and upper bounds
     st.sidebar.info(f'Bounds example: exp(3) * 0.5 * pi + 2')
