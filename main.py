@@ -54,7 +54,8 @@ def main():
     st.title('Integral Calculator 🧮')
     st.markdown("### > 👈 sidebar: 📄⚙️")
 
-    st.sidebar.title('Allowed: exp(), pi')
+    st.sidebar.title('Configuration')
+    st.sidebar.success('Allowed: exp(), pi, sin, cos, tan)
     # Input box for the user-defined function
     st.sidebar.info(f'Example fn: exp(3) * (x **6 + x **5)**0.2')
     user_input = st.sidebar.text_input('Enter the function, use x:', 'x**2')
