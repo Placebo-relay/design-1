@@ -98,7 +98,7 @@ def main():
     st.latex(f"{integral_latex} = {result_latex} = {result_latex_evalf}")
 
     if not st.sidebar.checkbox('get Complex bounds'):
-        with col1: st.latex(integral_latex)
+        #with col1: st.latex(integral_latex)
         x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
         y_values = [user_function.subs('x', val) for val in x_values]
         simpson_result = simpson(y_values, x_values)
