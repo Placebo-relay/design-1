@@ -53,7 +53,7 @@ def main():
     """
     st.markdown(hide_menu, unsafe_allow_html=True)
     st.title('Integral Calculator 🧮')
-    st.header("> 👈 sidebar: 📄⚙️", divider='rainbow')
+    st.markdown("### > 👈 sidebar: 📄⚙️")
 
     st.sidebar.title('Integral config.💡Use it:')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
@@ -99,7 +99,9 @@ def main():
     #sympy_result_evalf = sympy_result.evalf()
     result_latex = latex(sympy_result)
     result_latex_evalf = latex(sympy_result.evalf())
-    with col1: st.latex(f"➡{integral_latex} = {result_latex} = {result_latex_evalf}")
+    with col1:
+        st.subheader('⬇️⬆️Definite Integral', divider=True)
+        st.latex(f"➡{integral_latex} = {result_latex} = {result_latex_evalf}")
 
     if not st.sidebar.checkbox('get Complex/symbolic bounds'):
         num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
