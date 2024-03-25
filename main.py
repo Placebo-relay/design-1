@@ -87,18 +87,19 @@ def main():
 
     num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
 
+    integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
+        col1, _ = st.columns(2)
+        with col1: st.latex(integral_latex)
+    
     if st.sidebar.checkbox('get Complex bounds'):
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
-        print(sympy_result)
+        st.write(sympy_result)
     else:
         x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
         y_values = [user_function.subs('x', val) for val in x_values]
         simpson_result = simpson(y_values, x_values)
         mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
         sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text)))
-        integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
-        col1, _ = st.columns(2)
-        with col1: st.latex(integral_latex)
         
         data = {
             'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
