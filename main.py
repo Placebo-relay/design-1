@@ -61,7 +61,7 @@ def main():
     st.title('Integral Calculator 🧮')
     st.markdown("### > 👈 sidebar: 📄⚙️")
 
-    st.sidebar.title('Integral config.💡Use it:')
+    st.sidebar.subheader('📄💡Use it:', divider='green')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
     # Input box for the user-defined function
     x = symbols('x')
