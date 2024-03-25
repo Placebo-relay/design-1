@@ -91,11 +91,8 @@ def main():
     col1, _ = st.columns(2)
     
     if st.sidebar.checkbox('get Complex bounds'):
-        integral_c = Integral(user_function, (x, lower_bound_text, upper_bound_text))
-        integral_latex_c = integral_c.doit()
-        integral_result_c = integral_latex_c.evalf()
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
-        st.latex(f"{integral_latex} = {integral_result_c}")
+        st.latex(f"{integral_latex} = {sympy_result}")
 
     else:
         with col1: st.latex(integral_latex)
