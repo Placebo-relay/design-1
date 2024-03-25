@@ -75,7 +75,7 @@ def main():
 
     except Exception as e:
         st.write("⚠️Invalid input in 📈')
-        st.sidebar.error('Sorry, check the fn, maybe multiply all x?')
+        st.sidebar.error('Sorry, check the fn, maybe multiply all x?")
 
     # Input boxes for lower and upper bounds
     st.sidebar.info(f'Bounds example: exp(3) * 0.5 * pi + 2')
