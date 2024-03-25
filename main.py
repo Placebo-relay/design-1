@@ -61,7 +61,9 @@ def main():
     st.title('Integral Calculator 🧮')
     st.markdown("### > 👈 sidebar: 📄⚙️")
 
-    st.sidebar.subheader('📄💡Use it:', divider='green')
+    st.sidebar.header('⚙️')
+    st.sidebar.write('This is an app to integrate custom function. It allows custom bounds too.')
+    st.sidebar.subheader('💡Use it:', divider='green')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
     # Input box for the user-defined function
     x = symbols('x')
