@@ -85,10 +85,10 @@ def main():
     except Exception as e:
         st.write("Invalid input in bound section:", e)
 
+    integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
+    st.sidebar.latex(integral_latex)
     num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
 
-    integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
-    with st.sidebar: st.latex(integral_latex)
     col1, _ = st.columns(2)
     
     if st.sidebar.checkbox('get Complex bounds'):
