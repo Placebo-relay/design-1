@@ -99,7 +99,6 @@ def main():
     #sympy_result_evalf = sympy_result.evalf()
     result_latex = latex(sympy_result)
     result_latex_evalf = latex(sympy_result.evalf())
-    st.subheader('⬇️⬆️Definite Integral', divider=True)
     with col1: st.latex(f"➡{integral_latex} = {result_latex} = {result_latex_evalf}")
 
     if not st.sidebar.checkbox('get Complex/symbolic bounds'):
