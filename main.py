@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from sympy import sympify, symbols, pi, exp, integrate, SympifyError, latex, Integral, sin, cos, tan, atan2, cot, acos, asin, atan, I, Pow
 from scipy.integrate import simpson
+from sympy.printing.preview import preview
 import pandas as pd
 
 def custom_midpoint_integration(func, a, b, n):
@@ -65,6 +66,11 @@ def main():
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
+        # Solve the indefinite integral
+        ind_integral = sp.integrate(function, sp.symbols('x'))
+        st.latex(f"The indefinite integral of ${sp.latex(user_function)}$ is ${sp.latex(ind_integral)} + C$")
+
+
 
     except Exception as e:
         st.write("Invalid input in 📈, please 1) use example, 2) try multiply x, x**2+x is better than x*(x+1)", e)
