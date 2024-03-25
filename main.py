@@ -54,10 +54,10 @@ def main():
     st.title('Integral Calculator 🧮')
     st.markdown("### > 👈 sidebar: 📄⚙️")
 
-    st.sidebar.title('Use it:')
+    st.sidebar.title('💡Use it:')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
     # Input box for the user-defined function
-    st.sidebar.write('## Function')
+    st.sidebar.write('## 📈Function')
     st.sidebar.info(f'Example fn: exp(3) * (x **6 + x **5)**0.2')
     user_input = st.sidebar.text_input('Enter the function, use x:', 'x**2')
     if st.sidebar.checkbox('Apply Example fn instead'):
@@ -67,7 +67,7 @@ def main():
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
 
     except Exception as e:
-        st.write("Invalid input in Function, please 1) use example, 2) try multiply x, x**2+x is better than x*(x+1)", e)
+        st.write("Invalid input in 📈, please 1) use example, 2) try multiply x, x**2+x is better than x*(x+1)", e)
 
     # Input boxes for lower and upper bounds
     st.sidebar.info(f'Bounds example: exp(3) * 0.5 * pi + 2')
@@ -75,8 +75,8 @@ def main():
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
     
-    lower_bound_str = st.sidebar.text_input('Enter the lower bound:', '0')
-    upper_bound_str = st.sidebar.text_input('Enter the upper bound:', '2*pi')
+    lower_bound_str = st.sidebar.text_input('⬇️Enter the lower bound:', '0')
+    upper_bound_str = st.sidebar.text_input('⬆️Enter the upper bound:', '2*pi')
 
     try:
         lower_bound_text = sympify(lower_bound_str, locals={"pi": pi, "exp": exp})
@@ -86,7 +86,8 @@ def main():
         #st.sidebar.write("Parsed lower bound:", lower_bound_text)
         #st.sidebar.write("Parsed upper bound:", upper_bound_text)
     except Exception as e:
-        st.sidebar.error("Invalid input in bound section. Use any: pi, 3*pi/4, cos(pi/3).")
+        st.sidebar.error("Invalid input in ⬇️⬆️. Use any: pi, 3*pi/4, cos(pi/3).")
+        st.sidebar.success('Allowed: exp(), pi, sin, cos, tan, I, Pow')
 
     col1, _ = st.columns(2)
     
