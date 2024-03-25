@@ -95,7 +95,7 @@ def main():
         integral_latex_c = integral_c.doit()
         integral_result_c = integral_latex_c.evalf()
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
-        st.latex(f"\\int_{{{lower_bound_text}}}^{{{upper_bound_text}}}{user_function} \\,dx = {integral_latex_c} = {integral_result_c}")
+        st.latex(f"{integral_latex} = {integral_result_c}")
 
     else:
         with col1: st.latex(integral_latex)
