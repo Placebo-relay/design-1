@@ -150,9 +150,8 @@ def main():
         return result
     """
     
-        col3, col4 = st.columns(2)
-        with col3: st.code(simpson_rule_code, language='python')
-        with col4: st.code(midpoint_rule_code, language='python')
+        st.code(simpson_rule_code, language='python')
+        st.code(midpoint_rule_code, language='python')
 
     else:
         st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
