@@ -37,11 +37,11 @@ def main():
     }
     
     footer {
-        visibility: hidden;
+        visibility: visible;
     }
     footer:after{
         visibility: visible;
-        Content:"Demo for ikt_PRO. Copyright @ 2023";
+        Content:"Demo for design_practice. Copyright @ 2024";
         display: block;
         position: relative;
         padding: 5px;
