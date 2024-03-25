@@ -59,7 +59,7 @@ def main():
     # Input box for the user-defined function
     st.sidebar.info(f'Example fn: exp(3) * (x **6 + x **5)**0.2')
     user_input = st.sidebar.text_input('Enter the function, use x:', 'x**2')
-    if st.sidebar.checkbox('Apply Example function'):
+    if st.sidebar.checkbox('Apply Example fn instead'):
         user_input = 'exp(3)*(x**6+x**5)**0.2'
 
     try:
