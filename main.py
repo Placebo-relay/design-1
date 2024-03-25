@@ -93,7 +93,7 @@ def main():
     
     if st.sidebar.checkbox('get Complex bounds'):
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
-        st.write(sympy_result)
+        with col2: st.latex(integral_latex, '=' sympy_result)
     else:
         x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
         y_values = [user_function.subs('x', val) for val in x_values]
