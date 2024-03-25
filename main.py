@@ -98,8 +98,8 @@ def main():
     sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
     #sympy_result_evalf = sympy_result.evalf()
     result_latex = latex(sympy_result)
-    result_latex_evalf = latex(sympy_result.evalf())
-    with col1: st.latex(f"➡{integral_latex} = {result_latex} = {result_latex_evalf:.2g}")
+    result_latex_evalf = latex(sympy_result.evalf(2))
+    with col1: st.latex(f"➡{integral_latex} = {result_latex} = {result_latex_evalf}")
 
     if not st.sidebar.checkbox('get Complex/symbolic bounds'):
         num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
@@ -112,10 +112,10 @@ def main():
   
         data = {
             'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
-            'Result': [sympy_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
+            'Result': [sympy_result.evalf(), simpson_result.evalf(2), mid_rectangle_result.evalf(2)]
         }
         df = pd.DataFrame(data)
-        df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf()) / sympy_result.evalf()
+        df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf(2)) / sympy_result.evalf(2)
         #df['% Difference'] = df['% Difference']
         #df['Result'] = df['Result'].apply(lambda x: format(x, '.15f'))
         #df['% Difference'] = df['% Difference'].apply(lambda x: format(x, '.15f')) 
