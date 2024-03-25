@@ -54,7 +54,7 @@ def main():
     st.title('Integral Calculator 🧮')
     st.markdown("### > 👈 sidebar: 📄⚙️")
 
-    st.sidebar.title('Use complex expression')
+    st.sidebar.title('Use it:')
     st.sidebar.success('exp(), pi, sin, cos, tan, I')
     # Input box for the user-defined function
     st.sidebar.info(f'Example fn: exp(3) * (x **6 + x **5)**0.2')
@@ -88,25 +88,29 @@ def main():
     num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
     x_values = np.linspace(float(lower_bound_text), float(upper_bound_text), num_subintervals)
     y_values = [user_function.subs('x', val) for val in x_values]
-    
-    simpson_result = simpson(y_values, x_values)
-    mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
-    sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text)))
-    integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
-    col1, _ = st.columns(2)
-    with col1: st.latex(integral_latex)
-    
-    data = {
-        'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
-        'Result': [sympy_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
-    }
-    df = pd.DataFrame(data)
-    df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf()) / sympy_result.evalf()
-    #df['% Difference'] = df['% Difference']
-    #df['Result'] = df['Result'].apply(lambda x: format(x, '.15f'))
-    #df['% Difference'] = df['% Difference'].apply(lambda x: format(x, '.15f')) 
-    st.write("Integration Results:")
-    st.dataframe(df, hide_index=True)
+
+    if st.sidebar.checkbox('get Complex bounds'):
+        sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
+        print(sympy_result)
+    else:
+        simpson_result = simpson(y_values, x_values)
+        mid_rectangle_result = custom_midpoint_integration(user_function, float(lower_bound_text), float(upper_bound_text), num_subintervals)
+        sympy_result = integrate(user_function, (x, float(lower_bound_text), float(upper_bound_text)))
+        integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
+        col1, _ = st.columns(2)
+        with col1: st.latex(integral_latex)
+        
+        data = {
+            'Method': ['Sympy', 'Simpson', 'Mid-Rectangle'],
+            'Result': [sympy_result.evalf(), simpson_result.evalf(), mid_rectangle_result.evalf()]
+        }
+        df = pd.DataFrame(data)
+        df['% Difference'] = 100 * abs(df['Result'] - sympy_result.evalf()) / sympy_result.evalf()
+        #df['% Difference'] = df['% Difference']
+        #df['Result'] = df['Result'].apply(lambda x: format(x, '.15f'))
+        #df['% Difference'] = df['% Difference'].apply(lambda x: format(x, '.15f')) 
+        st.write("Integration Results:")
+        st.dataframe(df, hide_index=True)
 
 if __name__ == '__main__':
     main()
