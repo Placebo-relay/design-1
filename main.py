@@ -179,8 +179,8 @@ double midpoint_integration(double (*func)(double), double a, double b, int n) {
     return result;
 }
 """
-        st.code(simpson_rule_code_cpp, language='cpp')
-        st.code(midpoint_rule_code_cpp, language='cpp')
+        st.code(simpson_rule_code_cpp, language='cpp', line_numbers=True)
+        st.code(midpoint_rule_code_cpp, language='cpp', line_numbers=1)
 
     else:
         st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
