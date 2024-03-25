@@ -51,7 +51,8 @@ def main():
     </style>
     """
     st.markdown(hide_menu, unsafe_allow_html=True)
-    st.title('Integral Calculator')
+    st.title('Integral Calculator 🧮')
+    st.markdown("### > 👈 sidebar: ⚙️")
 
     st.sidebar.title('Allowed: exp(), pi')
     # Input box for the user-defined function
