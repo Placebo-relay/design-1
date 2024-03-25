@@ -58,6 +58,9 @@ def main():
     st.sidebar.title('Integral config.💡Use it:')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
     # Input box for the user-defined function
+    x = symbols('x')
+    pi_symbol = symbols('pi')
+    exp_symbol = symbols('exp')
     st.sidebar.write('## 📈Function')
     st.sidebar.info(f'Example fn: exp(3) * (x **6 + x **5)**0.2')
     user_input = st.sidebar.text_input('Enter the function, use x:', 'x**2')
@@ -74,9 +77,6 @@ def main():
 
     # Input boxes for lower and upper bounds
     st.sidebar.info(f'Bounds example: exp(3) * 0.5 * pi + 2')
-    x = symbols('x')
-    pi_symbol = symbols('pi')
-    exp_symbol = symbols('exp')
 
     st.sidebar.write('## ⬇️⬆️Bounds')
     lower_bound_str = st.sidebar.text_input('⬇️Enter the lower bound:', '0')
