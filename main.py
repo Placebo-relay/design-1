@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from sympy import sympify, symbols, pi, exp, integrate, SympifyError, latex, Integral
+from sympy import sympify, symbols, pi, exp, integrate, SympifyError, latex, Integral, sin, cos, tan, atan2, cot, acos, asin, atan
 from scipy.integrate import simpson
 import pandas as pd
 
