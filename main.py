@@ -83,7 +83,7 @@ def main():
         #st.sidebar.write("Parsed lower bound:", lower_bound_text)
         #st.sidebar.write("Parsed upper bound:", upper_bound_text)
     except Exception as e:
-        st.error("Invalid input in bound section. Use any: pi, 3*pi/4, cos(pi/3).")
+        st.sidebar.error("Invalid input in bound section. Use any: pi, 3*pi/4, cos(pi/3).")
 
     integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
     st.sidebar.latex(integral_latex)
