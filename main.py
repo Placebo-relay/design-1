@@ -92,7 +92,7 @@ def main():
     
     if st.sidebar.checkbox('get Complex bounds'):
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
-        st.latex(f"{integral_latex} = {sympy_result}")
+        st.latex(f"{integral_latex} = {sympy_result.evalf()}")
 
     else:
         with col1: st.latex(integral_latex)
