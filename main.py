@@ -54,7 +54,7 @@ def main():
     st.title('Integral Calculator 🧮')
     st.markdown("### > 👈 sidebar: 📄⚙️")
 
-    st.sidebar.title('💡Use it:')
+    st.sidebar.title('Integral config.💡Use it:')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
     # Input box for the user-defined function
     st.sidebar.write('## 📈Function')
@@ -74,7 +74,8 @@ def main():
     x = symbols('x')
     pi_symbol = symbols('pi')
     exp_symbol = symbols('exp')
-    
+
+    st.sidebar.write('## ⬇️⬆️Bounds')
     lower_bound_str = st.sidebar.text_input('⬇️Enter the lower bound:', '0')
     upper_bound_str = st.sidebar.text_input('⬆️Enter the upper bound:', '2*pi')
 
