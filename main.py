@@ -94,7 +94,7 @@ def main():
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
         #sympy_result_evalf = sympy_result.evalf()
         result_latex = latex(sympy_result)
-        st.latex(f"{integral_latex} = {result_latex}")
+        st.latex(f"{integral_latex} = {result_latex} = {result_latex.evalf()}")
 
     else:
         with col1: st.latex(integral_latex)
