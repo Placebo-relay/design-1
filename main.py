@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 from sympy import sympify, symbols, pi, exp, integrate, SympifyError, latex, Integral, sin, cos, tan, atan2, cot, acos, asin, atan, I, Pow, oo
 from scipy.integrate import simpson
-from sympy.printing.preview import preview
 import pandas as pd
 
 def custom_midpoint_integration(func, a, b, n):
