@@ -71,7 +71,7 @@ def main():
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
         indef_integral = integrate(user_input, x)
-        with col1: st.latex(f"\\int_{{-\\infty}}^{{\\infty}} {latex(user_function)} \\,dx = {latex(indef_integral)} + C")
+        st.latex(f"\\int_{{-\\infty}}^{{\\infty}} {latex(user_function)} \\,dx = {latex(indef_integral)} + C")
 
     except Exception as e:
         st.write('⚠️Invalid input in 📈')
@@ -99,8 +99,7 @@ def main():
     #sympy_result_evalf = sympy_result.evalf()
     result_latex = latex(sympy_result)
     result_latex_evalf = latex(sympy_result.evalf())
-    test = latex(f"➡{integral_latex} = {result_latex} = \\\ {result_latex_evalf}")
-    st.write(f'{test}')
+    st.latex(f"➡{integral_latex} = {result_latex} = \\\ {result_latex_evalf}")
 
     if not st.sidebar.checkbox('get Complex/symbolic bounds'):
         num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
