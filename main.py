@@ -134,12 +134,15 @@ def main():
         st.write("Integration Results:")
         st.dataframe(df, hide_index=True)
 
-        simpson_rule_code = """
+    else:
+        st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
+
+    simpson_rule_code = """
     def simpson_integration(fn, a, b):
         return (b - a) / 6 * (fn(a) + 4 * fn((a + b) / 2) + fn(b))
     """
     
-        midpoint_rule_code = """
+    midpoint_rule_code = """
     def midpoint_integration(func, a, b, n):
         h = (b - a) / n
         result = 0
@@ -150,13 +153,13 @@ def main():
         return result
     """
 
-        tab1, tab2 = st.tabs(["Python", "C++"])
-        with tab1:
+    tab1, tab2 = st.tabs(["Python", "C++"])
+    with tab1:
             st.code(simpson_rule_code, language='python')
             st.code(midpoint_rule_code, language='python')
 
-        # C++ code for Simpson's Rule
-        simpson_rule_code_cpp = """
+    # C++ code for Simpson's Rule
+    simpson_rule_code_cpp = """
 #include <iostream>
 using namespace std;
 
@@ -165,8 +168,8 @@ double simpson_integration(double (*fn)(double), double a, double b) {
 }
 """
 
-# C++ code for Midpoint Rule
-        midpoint_rule_code_cpp = """
+    # C++ code for Midpoint Rule
+    midpoint_rule_code_cpp = """
 #include <iostream>
 using namespace std;
 
@@ -181,12 +184,9 @@ double midpoint_integration(double (*func)(double), double a, double b, int n) {
     return result;
 }
 """
-        with tab2:
-            st.code(simpson_rule_code_cpp, language='cpp', line_numbers=True)
-            st.code(midpoint_rule_code_cpp, language='cpp', line_numbers=1)
-
-    else:
-        st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
+    with tab2:
+        st.code(simpson_rule_code_cpp, language='cpp', line_numbers=True)
+        st.code(midpoint_rule_code_cpp, language='cpp', line_numbers=1)
 
 if __name__ == '__main__':
     main()
