@@ -62,8 +62,7 @@ def main():
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
-        col01, col02 = st.columns(2)
-        with col01: st.write("Parsed function:", user_function)
+
     except Exception as e:
         st.write("Invalid input:", e)
 
