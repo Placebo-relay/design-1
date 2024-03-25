@@ -62,7 +62,7 @@ def main():
     st.markdown("### > 👈 sidebar: 📄⚙️")
 
     st.sidebar.header('⚙️')
-    st.sidebar.write('This is an app to integrate custom function. It allows custom bounds too.')
+    st.sidebar.write('This is an app to integrate custom function over custom bounds. Example fn is offered, on default gives more data: Simpson and Mid-rectangle methods.')
     st.sidebar.subheader('💡Use it:', divider='green')
     st.sidebar.success('exp(), pi, sin, cos, tan, I, Pow')
     # Input box for the user-defined function
