@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-from sympy import sympify, symbols, pi, exp, integrate, SympifyError, latex, Integral, sin, cos, tan, atan2, cot, acos, asin, atan, I, Pow
+from sympy import sympify, symbols, pi, exp, integrate, SympifyError, latex, Integral, sin, cos, tan, atan2, cot, acos, asin, atan, I, Pow, oo
 from scipy.integrate import simpson
 from sympy.printing.preview import preview
 import pandas as pd
@@ -66,11 +66,6 @@ def main():
 
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
-        # Solve the indefinite integral
-        ind_integral = integrate(user_function, symbols('x'))
-        st.latex(f"The indefinite integral of ${latex(user_function)}$ is ${latex(ind_integral)} + C$")
-
-
 
     except Exception as e:
         st.write("Invalid input in 📈, please 1) use example, 2) try multiply x, x**2+x is better than x*(x+1)", e)
@@ -126,7 +121,7 @@ def main():
         st.dataframe(df, hide_index=True)
 
     else:
-        st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or n to solve without numbers')
+        st.sidebar.info('Type Complex as I or 3*I+9, use symbols like t m or even oo with -oo to solve without numbers')
 
 if __name__ == '__main__':
     main()
