@@ -51,6 +51,13 @@ def main():
         text-align: left;
     </style>
     """
+    st.set_page_config(
+    page_title="Integrate",
+    page_icon="🧮",
+    layout="wide",
+    initial_sidebar_state="expanded"
+    )
+    
     st.markdown(hide_menu, unsafe_allow_html=True)
     st.title('Integral Calculator 🧮')
     st.markdown("### > 👈 sidebar: 📄⚙️")
