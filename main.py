@@ -88,8 +88,8 @@ def main():
     num_subintervals = st.sidebar.slider('Number of Subintervals', min_value=100, max_value=1000, value=500, step = 100)
 
     integral_latex = latex(Integral(user_function, (x, lower_bound_text, upper_bound_text)))
-        col1, _ = st.columns(2)
-        with col1: st.latex(integral_latex)
+    col1, _ = st.columns(2)
+    with col1: st.latex(integral_latex)
     
     if st.sidebar.checkbox('get Complex bounds'):
         sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
