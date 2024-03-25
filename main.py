@@ -67,7 +67,7 @@ def main():
     try:
         user_function = sympify(user_input, locals={"pi": pi, "exp": exp})
         # Solve the indefinite integral
-        ind_integral = integrate(function, symbols('x'))
+        ind_integral = integrate(user_function, symbols('x'))
         st.latex(f"The indefinite integral of ${latex(user_function)}$ is ${latex(ind_integral)} + C$")
 
 
