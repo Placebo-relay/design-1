@@ -91,7 +91,7 @@ def main():
     col1, _ = st.columns(2)
     
     if st.sidebar.checkbox('get Complex bounds'):
-        sympy_result = integrate(user_function, (x, (lower_bound_text), (upper_bound_text)))
+        sympy_result = integrate(user_function, (x, complex(lower_bound_text), complex(upper_bound_text)))
         st.latex(f"{integral_latex} = {sympy_result.evalf()}")
 
     else:
